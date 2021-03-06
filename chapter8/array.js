@@ -101,7 +101,7 @@ console.log(arrFill.fill("a"));         // ["a", "a", "a", "a", "a"]
 console.log(arrFill.fill("c", 2, 4));   // ["a", "a", "c", "c", "a"] c-1 까지!!
 
 // 배열 정렬과 역순 정렬
-/*
+/* 
  * reverse : 역순 정렬
  * sort : 정렬
 */
@@ -116,3 +116,67 @@ const arrSortF = [{ name: "Suzanne"}, { name: "Jim"},
 //arrSortF.sort();                             // 바뀌지 않음.
 arrSortF.sort((a, b) => a.name < b.name ? -1 : a.name > b.name ? 1 : 0);    // arr은 name 프로퍼티의 알파벳 순으로 정렬
 console.log(arrSortF);
+
+// 배열 검색
+/*
+ * indexOf : 찾고자 하는 것과 정확히 일치(===)하는 첫번째 요소 인덱스 반환
+ * lastIndex : 배열의 끝에서 indexOf와 같은 기능
+ * findIndex : indexOf와 비슷하지만 보조함수를 써서 검색 조건 지정 가능
+*/
+
+const arrFindIndex = [{ id: 5, name: "Judith"}, { id: 7, name: "Francis"}];
+console.log(arrFindIndex.findIndex(o => o.id === 5)); // 0
+console.log(arrFindIndex.findIndex(o => o.id === 3)); // -1
+
+// 요소 자체를 원할 때는 find를 사용
+console.log(arrFindIndex.find(o => o.id === 5)); // { id: 5, name: "Judith"}
+
+// 요소가 있는지 없는지만 알면 되는 메소드 : some, every
+/*
+ * some : 조건에 맞는 요소를 찾으면 true, 없으면 false
+ * every : 배열의 모든 요소가 조건에 맞아야 true
+*/
+
+const arrSomeOrEvery = [4, 6, 16, 36];
+console.log(arrSomeOrEvery.some(x => x%2===1)); // false, 홀수가 없음.
+console.log(arrSomeOrEvery.every(x => x%2===0)); // true
+ 
+// map과 filter
+/*
+ * map, filter : 배열 요소를 변형. 사본을 반환 
+ */
+
+const cart = [ { name: "Widget", price: 9.95 }, { name: "Gadget", price: 22.95 }];
+const names = cart.map(x => x.name);
+console.log(names); // ["Widget", "Gadget"]
+ 
+const cards = [];
+for(let suit of ['H', 'C', 'D', 'S'])
+   for(let value=1; value<=13; value++)
+       cards.push({ suit, value});
+
+const evenCards = cards.filter(c => c.value === 2);
+console.log(evenCards);
+
+// reduce
+/*
+ * reduce : 배열을 이용해서 값을 도출
+ */
+
+// 배열요소의 합
+const arrReduce = [5, 7, 2, 4];
+const sum = arrReduce.reduce((a, x) => a += x, 0);
+console.log(sum);
+console.log(arrReduce);
+
+// 문자열 병합
+/*
+ * join : 매개변수로 구분자 하나를 받고 요소들을 하나로 합친 문자열 반환
+ * 정의되지 않은 요소, 삭제된 요소, null, undefined는 모두 빈문자열 취급
+ */
+
+const arrJoin = [1, null, "hello", "world", true, undefined];
+delete arrJoin[3];
+console.log(arrJoin.join());    //"1,,hello,,true," -> 매개변수가 생력됬을 때 기본값은 쉼표
+console.log(arrJoin.join(''));  //"1hellotrue"
+console.log(arrJoin.join(' -- ')) //"1 -- -- hello -- -- true --"
