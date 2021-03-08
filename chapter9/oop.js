@@ -65,4 +65,3 @@ function CarEs5(make, model) {
 class CarEs6 {}
 console.log(typeof(CarEs5));
 console.log(typeof(CarEs6));
-
