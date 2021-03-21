@@ -1,0 +1,40 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Simple HTML</title>
+        <style>
+            .callout {
+                border: solid 1px #ff0080;
+                margin: 2px 4px;
+                padding: 2p 6px;
+            }
+            .code {
+                background: #ccc;
+                margin: 1px 2px;
+                padding: 1px 4px;
+                font-family: monospace;
+            }
+        </style>
+        <link rel="stylesheet" href="highlight.css">
+    </head>
+    <body>
+        <header>
+            <h1>Simple HTML</h1>
+        </header>
+        <div id="content">
+            <p>This is a <i>simple</i> HTML file.</p>
+            <div class="callout">
+                <p>THis is as fancy as we'll get!</p>
+            </div>
+            <p>IDs (such as <span class="code">#content</span>)
+                are unique (there can only be one per page).</p>
+            <p>Classes (such as <span class="code">.callout</span>)
+               can be used on many elements.</p>
+            <div id="callout"2 class="callout fancy">
+                <p>A sinlgle HTML, element can have multiple class</p>
+            </div>
+        </div>
+        <script type="text/javascript" src="elementStyling.js"></script>
+    </body>
+</html>
